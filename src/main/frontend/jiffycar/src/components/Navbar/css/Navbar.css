@@ -29,6 +29,8 @@
   width: 70vw;
   justify-content: end;
   margin-right: 2rem;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .nav-links {
@@ -108,7 +110,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 60%);
+    transform: translate(-100%, 20%);
     font-size: 1.8rem;
     cursor: pointer;
   }
