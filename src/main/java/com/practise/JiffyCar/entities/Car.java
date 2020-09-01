@@ -22,11 +22,13 @@ public class Car {
     private Date rentedFrom;
     @Column(name = "rented_day_to")
     private Date rentedTo;
+    @Column(name = "car_state")
+    private boolean state;
 
     public Car() {
     }
 
-    public Car(int id, String carMaker, String carModel, String manuYear, int numOfSeats, double pricePerDay, Date rentedFrom, Date rentedTo) {
+    public Car(int id, String carMaker, String carModel, String manuYear, int numOfSeats, double pricePerDay, Date rentedFrom, Date rentedTo, boolean state) {
         this.id = id;
         this.carMaker = carMaker;
         this.carModel = carModel;
@@ -35,6 +37,7 @@ public class Car {
         this.pricePerDay = pricePerDay;
         this.rentedFrom = rentedFrom;
         this.rentedTo = rentedTo;
+        this.state = state;
     }
 
     public int getId() {
@@ -101,6 +104,14 @@ public class Car {
         this.rentedTo = rentedTo;
     }
 
+    public boolean isState() {
+        return state;
+    }
+
+    public void setState(boolean state) {
+        this.state = state;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -112,10 +123,11 @@ public class Car {
                 ", pricePerDay=" + pricePerDay +
                 ", rentedFrom=" + rentedFrom +
                 ", rentedTo=" + rentedTo +
+                ", state=" + state +
                 '}';
     }
 
-//    public CarDto toDto() {
+    //    public CarDto toDto() {
 //        return new CarDto(id, carMaker, carModel, manuYear, numOfSeats, pricePerDay, rentedFrom, rentedTo);
 //    }
 }
