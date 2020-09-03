@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import "./css/Footer.css";
 import GeneratedText from "../GeneratedText";
 class Footer extends Component {
   state = {};

@@ -1,7 +1,7 @@
 import React from "react";
-import GeneratedText from "../components/GeneratedText";
-import Footer from "../components/Footer/Footer";
 import "../css/homeContent.css";
+import GeneratedText from "../components/GeneratedText";
+
 const HomeContent = () => {
   return (
     <div className="homeContentContainer">
@@ -71,7 +71,6 @@ const HomeContent = () => {
             </div>
           </div>
         </div>
-        <Footer />
       </div>
     </div>
   );
