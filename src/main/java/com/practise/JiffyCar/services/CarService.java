@@ -16,4 +16,16 @@ public class CarService {
         return carsRepository.findAll();
     }
 
+    public Car save(Car car) {
+       return carsRepository.save(car);
+    }
+
+    public Car get(Integer id) {
+        return carsRepository.findById(id).get();
+    }
+
+    public void delete(Integer id) {
+        carsRepository.deleteById(id);
+    }
+
 }
