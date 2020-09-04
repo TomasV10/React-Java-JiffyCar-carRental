@@ -12,7 +12,19 @@ class CarList extends Component {
 
   addCar = () => {
     console.log("worked");
-    this.props.history.push("/addCar");
+    this.props.history.push("/addCar/_add");
+  };
+
+  editCar = (id) => {
+    this.props.history.push(`/addCar/${id}`);
+  };
+
+  deleteCar = (id) => {
+    CarService.deleteCar(id).then((res) => {
+      this.setState({
+        carList: this.state.carList.filter((car) => car.id !== id),
+      });
+    });
   };
   render() {
     return (
@@ -26,6 +38,8 @@ class CarList extends Component {
                 {car.manuYear}
                 {car.state ? "Rented" : "Available"}
               </div>
+              <button onClick={() => this.editCar(car.id)}>Update</button>
+              <button onClick={() => this.deleteCar(car.id)}>Delete</button>
             </div>
           ))}
         </h1>
