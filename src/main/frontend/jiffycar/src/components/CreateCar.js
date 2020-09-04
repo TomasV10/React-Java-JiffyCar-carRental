@@ -4,6 +4,7 @@ import CreatecarItems from "./CreateCarItems";
 
 class CreateCar extends Component {
   state = {
+    id: this.props.match.params.id,
     carMaker: "",
     carModel: "",
     manuYear: "",
@@ -13,7 +14,26 @@ class CreateCar extends Component {
     rentedTo: "",
   };
 
-  saveCar = (e) => {
+  componentDidMount = () => {
+    if (this.state.id === "_add") {
+      return;
+    } else {
+      CarService.getCarById(this.state.id).then((res) => {
+        let car = res.data;
+        this.setState({
+          carMaker: car.carMaker,
+          carModel: car.carModel,
+          manuYear: car.manuYear,
+          numOfSeats: car.numOfSeats,
+          pricePerDay: car.pricePerDay,
+          rentedFrom: car.rentedFrom,
+          rentedTo: car.rentedTo,
+        });
+      });
+    }
+  };
+
+  saveOrUpdateCar = (e) => {
     e.preventDefault();
 
     let car = {
@@ -25,13 +45,24 @@ class CreateCar extends Component {
       rentedFrom: this.state.rentedFrom,
       rentedTo: this.state.rentedTo,
     };
-    CarService.createCar(car).then((response) => {
-      this.props.history.push("/carlist");
-    });
+
+    if (this.state.id == -1) {
+      CarService.createCar(car).then((response) => {
+        this.props.history.push("/carlist");
+      });
+    } else {
+      CarService.updateCar(car, this.state.id).then((res) => {
+        this.props.history.push("/carlist");
+      });
+    }
   };
 
   cancel = () => {
     this.props.history.push("/carlist");
+  };
+
+  getTitle = () => {
+    return this.state.id === "_add" ? <h3>Add Car</h3> : <h3>Edit Car Info</h3>;
   };
 
   handleChange = (event) => {
@@ -44,24 +75,8 @@ class CreateCar extends Component {
   render() {
     return (
       <div>
-        <h3>Add Car</h3>
+        {this.getTitle()}
         <form>
-          {/* {CreatecarItems.map((item, index) => {
-            console.log(index);
-            return (
-              <div key={index} className={item.divClass}>
-                <lable>{item.title}</lable>
-                <input
-                  placeholder={item.placeholder}
-                  name={item.name}
-                  className={item.cName}
-                  //   value={this.state.numOfSeats}
-                  onChange={this.handleChange}
-                />
-              </div>
-            );
-          })} */}
-
           <div className="form-group">
             <label>Car Maker</label>
             <input
@@ -132,7 +147,7 @@ class CreateCar extends Component {
               onChange={this.handleChange}
             />
           </div>
-          <button onClick={this.saveCar}>Save</button>
+          <button onClick={this.saveOrUpdateCar}>Save</button>
           <button onClick={this.cancel}>Cancel</button>
         </form>
       </div>

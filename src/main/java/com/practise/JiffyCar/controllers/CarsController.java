@@ -3,6 +3,7 @@ package com.practise.JiffyCar.controllers;
 import com.practise.JiffyCar.entities.Car;
 import com.practise.JiffyCar.services.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,8 +20,8 @@ public class CarsController {
         return carService.getCarsList();
     }
     @GetMapping("/cars/{id}")
-    public Car get(@PathVariable Integer id) {
-        return carService.get(id);
+    public ResponseEntity <Car> getCarById(@PathVariable Integer id) {
+        return carService.getCarById(id);
     }
 
     @PostMapping("/cars")
@@ -29,14 +30,14 @@ public class CarsController {
     }
 
     @PutMapping("/cars/{id}")
-    public void update(@RequestBody  Car car,
+    public ResponseEntity <Car> updateCar(@RequestBody  Car car,
                        @PathVariable Integer id) {
-        Car existingCar = carService.get(id);
-        carService.save(car);
+        Car updatedCar = carService.updateCarById(id, car);
+        return ResponseEntity.ok(updatedCar);
     }
 
     @DeleteMapping("/cars/{id}")
-    public void delete (@PathVariable Integer id) {
-       carService.delete(id);
+    public void deleteById (@PathVariable Integer id) {
+       carService.deleteById(id);
     }
 }
