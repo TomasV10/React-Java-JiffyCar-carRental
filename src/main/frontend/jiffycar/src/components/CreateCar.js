@@ -46,7 +46,7 @@ class CreateCar extends Component {
       rentedTo: this.state.rentedTo,
     };
 
-    if (this.state.id == -1) {
+    if (this.state.id == "_add") {
       CarService.createCar(car).then((response) => {
         this.props.history.push("/carlist");
       });
