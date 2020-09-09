@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CarService from "../services/CarService";
-import CreatecarItems from "./CreateCarItems";
+import UploadFiles from "../components/UploadFiles";
 
 class CreateCar extends Component {
   state = {
@@ -55,6 +55,7 @@ class CreateCar extends Component {
         this.props.history.push("/carlist");
       });
     }
+    this.upload();
   };
 
   cancel = () => {
@@ -76,6 +77,7 @@ class CreateCar extends Component {
     return (
       <div>
         {this.getTitle()}
+        {this.state.id === "_add" ? <UploadFiles /> : null}
         <form>
           <div className="form-group">
             <label>Car Maker</label>
