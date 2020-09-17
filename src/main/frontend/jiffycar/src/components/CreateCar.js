@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import CarService from "../services/CarService";
+import UploadFiles from "../components/UploadFiles";
 
 class CreateCar extends Component {
   state = {
@@ -54,7 +55,6 @@ class CreateCar extends Component {
         this.props.history.push("/carlist");
       });
     }
-    this.upload();
   };
 
   cancel = () => {
