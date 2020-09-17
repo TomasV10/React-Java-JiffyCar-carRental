@@ -28,7 +28,6 @@ public class CarsController {
     public Car addCar(@RequestBody Car car) {
         return carService.save(car);
     }
-
     @PutMapping("/cars/{id}")
     public ResponseEntity <Car> updateCar(@RequestBody  Car car,
                        @PathVariable Integer id) {

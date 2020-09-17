@@ -1,6 +1,10 @@
 package com.practise.JiffyCar.entities;
 
+import com.sun.istack.Nullable;
+import org.apache.tomcat.jni.Local;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 @Entity
 @Table(name = "carlist")
@@ -19,16 +23,16 @@ public class Car {
     @Column(name = "price_per_day")
     private double pricePerDay;
     @Column(name = "rented_day_from")
-    private Date rentedFrom;
+    private LocalDate rentedFrom;
     @Column(name = "rented_day_to")
-    private Date rentedTo;
+    private LocalDate rentedTo;
     @Column(name = "car_state")
     private boolean state;
 
     public Car() {
     }
 
-    public Car(int id, String carMaker, String carModel, String manuYear, int numOfSeats, double pricePerDay, Date rentedFrom, Date rentedTo, boolean state) {
+    public Car(int id, String carMaker, String carModel, String manuYear, int numOfSeats, double pricePerDay, LocalDate rentedFrom, LocalDate rentedTo, boolean state) {
         this.id = id;
         this.carMaker = carMaker;
         this.carModel = carModel;
@@ -88,19 +92,19 @@ public class Car {
         this.pricePerDay = pricePerDay;
     }
 
-    public Date getRentedFrom() {
+    public LocalDate getRentedFrom() {
         return rentedFrom;
     }
 
-    public void setRentedFrom(Date rentedFrom) {
+    public void setRentedFrom(LocalDate rentedFrom) {
         this.rentedFrom = rentedFrom;
     }
 
-    public Date getRentedTo() {
+    public LocalDate getRentedTo() {
         return rentedTo;
     }
 
-    public void setRentedTo(Date rentedTo) {
+    public void setRentedTo(LocalDate rentedTo) {
         this.rentedTo = rentedTo;
     }
 
