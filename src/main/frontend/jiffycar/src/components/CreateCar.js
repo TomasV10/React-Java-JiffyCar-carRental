@@ -1,10 +1,5 @@
 import React, { Component } from "react";
 import CarService from "../services/CarService";
-<<<<<<< Updated upstream
-import CreatecarItems from "./CreateCarItems";
-=======
-import UploadFiles, { upload } from "../components/UploadFiles";
->>>>>>> Stashed changes
 
 class CreateCar extends Component {
   state = {
