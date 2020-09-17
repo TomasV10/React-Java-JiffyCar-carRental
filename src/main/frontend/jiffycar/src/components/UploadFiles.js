@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import UploadFileService from "../services/UploadFileService";
 import "react-bootstrap";
-
 class UploadFiles extends Component {
   state = {
     selectedFiles: undefined,

@@ -54,6 +54,7 @@ class CreateCar extends Component {
         this.props.history.push("/carlist");
       });
     }
+    this.upload();
   };
 
   cancel = () => {
@@ -75,6 +76,7 @@ class CreateCar extends Component {
     return (
       <div>
         {this.getTitle()}
+        {this.state.id === "_add" ? <UploadFiles /> : null}
         <form>
           <div className="form-group">
             <label>Car Maker</label>
