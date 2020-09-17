@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import CarService from "../services/CarService";
+<<<<<<< HEAD
+=======
+import UploadFiles from "../components/UploadFiles";
+>>>>>>> 63d9d02796cd948f2d9048e75f7596df299a6663
 
 class CreateCar extends Component {
   state = {
